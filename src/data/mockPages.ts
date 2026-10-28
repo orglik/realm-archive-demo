@@ -549,6 +549,7 @@ const redWeddingContent: EventContent = {
   hero: {
     subtitle: 'אירוע הפרת אמון באירוח — תיאור בדיוני לצורכי הדמו',
     date: '8298-05-29', region: 'הצפון',
+    heroImage: { id: 'h-e1', src: assetPath('/demo-images/scene-keep.svg'), name: 'איור כללי — אולם מבוצר' },
   },
   infoGrid: {
     commanderSummary: 'מפגש שנועד לאשרר ברית הסתיים בהפרת כללי האירוח ובפגיעה קשה במשתתפים. האירוע שינה את מאזן הכוחות בזירה הצפונית.',
@@ -575,6 +576,7 @@ const blackwaterContent: EventContent = {
   hero: {
     subtitle: 'קרב ימי ויבשתי על גישה לעיר מבוצרת',
     date: '8298-08-12', region: 'הדרום',
+    heroImage: { id: 'h-e2', src: assetPath('/demo-images/scene-harbor.svg'), name: 'איור כללי — מפרץ צר' },
   },
   infoGrid: {
     commanderSummary: 'כוח תוקף ניסה להיכנס למפרץ ולפרוץ אל העיר. ההגנה השתמשה במחסום ובאמצעי הצתה, ולאחר מכן ביציאת פרשים.',
@@ -614,6 +616,7 @@ const winterfellBattleContent: EventContent = {
   hero: {
     subtitle: 'הגנה על מעוז מבוצר בצפון',
     date: '8298-09-27', region: 'הצפון',
+    heroImage: { id: 'h-e3', src: assetPath('/demo-images/scene-keep.svg'), name: 'איור כללי — מעוז מבוצר' },
   },
   infoGrid: {
     commanderSummary: 'הסתערות על מעוז צפוני לפני עלות השחר. השער החיצוני נפרץ, והמגינים נסוגו לחצר הפנימית והחזיקו בה.',
@@ -640,6 +643,7 @@ const trialByCombatContent: EventContent = {
   hero: {
     subtitle: 'הכרעת משפט בדו-קרב — נוהל משפטי בעולם הבדיוני',
     date: '8298-06-11', region: 'ארצות הסערה',
+    heroImage: { id: 'h-e4', src: assetPath('/demo-images/banner-realm.svg'), name: 'איור כללי — הממלכה' },
   },
   infoGrid: {
     commanderSummary: 'סכסוך משפטי הוכרע בדו-קרב בין נציגי הצדדים, בהתאם לנוהל המקובל. התוצאה חייבה את שני הצדדים.',
@@ -695,6 +699,7 @@ const walkToWallContent: EventContent = {
   hero: {
     subtitle: 'מסע רגלי ארוך אל הגבול הצפוני',
     date: '8298-04-08', region: 'הצפון',
+    heroImage: { id: 'h-e6', src: assetPath('/demo-images/scene-river.svg'), name: 'איור כללי — הדרך הצפונית' },
   },
   infoGrid: {
     commanderSummary: 'קבוצת מגויסים הועברה ברגל אל מעוזי הגבול. המסע ארך שבועות ולווה בקשיי אספקה.',
@@ -721,6 +726,7 @@ const councilContent: EventContent = {
   hero: {
     subtitle: 'כינוס מועצה לדיון בסדר השלטוני',
     date: '8299-02-14', region: 'ארצות הסערה',
+    heroImage: { id: 'h-e7', src: assetPath('/demo-images/banner-realm.svg'), name: 'איור כללי — אולם המועצה' },
   },
   infoGrid: {
     commanderSummary: 'נציגי הבתים התכנסו לדיון על הסדר השלטוני שלאחר המאבק. הדיון לא הניב הכרעה מחייבת.',
@@ -746,7 +752,10 @@ const councilContent: EventContent = {
 // ═══════════════════ REFERENCE CONTENT ═══════════════════
 
 const housesRefContent: ReferencePageContent = {
-  hero: { subtitle: 'ריכוז מקורות על בתי האצולה המרכזיים' },
+  hero: {
+    subtitle: 'ריכוז מקורות על בתי האצולה המרכזיים',
+    heroImage: { id: 'h-r1', src: assetPath('/demo-images/chart-bars.svg'), name: 'איור כללי — התפלגות בתים' },
+  },
   overview: {
     synthesis: 'דף עיון רוחבי המרכז מקורות על בתי האצולה: אחוזות, בריתות וזיקות הדדיות. הדף אינו חלק מהיררכיית הנושאים אלא מקושר לרוחב.',
   },
@@ -759,7 +768,10 @@ const housesRefContent: ReferencePageContent = {
 }
 
 const chronologyRefContent: ReferencePageContent = {
-  hero: { subtitle: 'כרונולוגיה מרוכזת של תקופת המאבק' },
+  hero: {
+    subtitle: 'כרונולוגיה מרוכזת של תקופת המאבק',
+    heroImage: { id: 'h-r2', src: assetPath('/demo-images/chart-line.svg'), name: 'איור כללי — ציר כרונולוגי' },
+  },
   overview: {
     synthesis: 'דף עיון המרכז את סדר האירועים של התקופה בציר אחד, לצורך התמצאות מהירה בין הזירות.',
   },
@@ -772,7 +784,10 @@ const chronologyRefContent: ReferencePageContent = {
 
 // Deliberately linked to NO topic — demonstrates the "unassigned reference" shelf on the reader home.
 const glossaryRefContent: ReferencePageContent = {
-  hero: { subtitle: 'מונחון קצר של מונחים ומנהגים בעולם הבדיוני' },
+  hero: {
+    subtitle: 'מונחון קצר של מונחים ומנהגים בעולם הבדיוני',
+    heroImage: { id: 'h-r3', src: assetPath('/demo-images/map-schematic.svg'), name: 'איור כללי — סכמת אזורים' },
+  },
   overview: {
     synthesis: 'מונחון עצמאי שאינו משויך לאף דף נושא. הוא מופיע בקבוצת דפי העיון הלא-משויכים בעמוד הבית.',
   },

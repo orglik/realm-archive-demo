@@ -13,13 +13,12 @@ function CardImage({ src, alt, className }: { src?: string; alt: string; classNa
   if (src) return <img src={src} alt={alt} className={`${className} object-cover`} />
   return (
     <div
-      className={`${className} flex items-end justify-start p-2.5`}
+      className={`${className}`}
+      aria-hidden
       style={{
-        background: 'repeating-linear-gradient(45deg, var(--tag-bg) 0 12px, var(--lp-ribbon-bg) 12px 24px)',
+        background: 'linear-gradient(160deg, var(--lp-ribbon-bg), var(--tag-bg))',
       }}
-    >
-      <span className="font-mono text-[10.5px]" style={{ color: 'var(--lp-label)' }}>[ תמונת שער ]</span>
-    </div>
+    />
   )
 }
 
