@@ -18,9 +18,21 @@ grep -rnE "\bfetch\(|XMLHttpRequest|new WebSocket|navigator\.sendBeacon|import\(
 grep -nE "<link|<script" index.html
 ```
 
+## Link-preview metadata (added after the first deploy)
+
+`index.html` carries Open Graph and Twitter card tags whose `og:url`, `og:image` and
+`twitter:image` values are ABSOLUTE `https://orglik.github.io/...` URLs. They are **metadata read
+by a crawler when someone shares the link** — the app never requests them, and no code path
+dereferences them. They do appear in `dist/index.html`, so the grep below now reports them and
+they must be recognised rather than treated as a regression.
+
+The preview image itself, `og-image.png`, is served from this site's own origin like any other
+file in `public/`.
+
 ## Result
 
-Nine distinct absolute URLs appear in `dist/`. **None is a request target.**
+Eleven distinct absolute URLs now appear in `dist/`: the nine below, plus the two
+`orglik.github.io` metadata values just described. **None is a request target.**
 
 | URL | What it is | Fetched? |
 |---|---|---|
