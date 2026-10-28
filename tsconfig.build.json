@@ -1,0 +1,9 @@
+{
+  // Solution config for `tsc -b` (used by `npm run build` / `npm run typecheck`). Builds/type-checks
+  // both projects: the app (./src) and node (vite.config.ts), each with its own type environment.
+  "files": [],
+  "references": [
+    { "path": "./tsconfig.app.json" },
+    { "path": "./tsconfig.node.json" }
+  ]
+}

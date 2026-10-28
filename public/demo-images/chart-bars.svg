@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="800" height="450">
+  <!-- Abstract placeholder. No sigil, crest, real-world imagery or coordinates. -->
+  <rect width="800" height="450" fill="#F7FAFB"/>
+  <line x1="90" y1="370" x2="730" y2="370" stroke="#C3CDD4" stroke-width="2"/>
+  <line x1="90" y1="70" x2="90" y2="370" stroke="#C3CDD4" stroke-width="2"/>
+  <rect x="130" y="250" width="46" height="120" rx="3" fill="#9DB7C6"/>
+  <rect x="212" y="190" width="46" height="180" rx="3" fill="#9DB7C6"/>
+  <rect x="294" y="280" width="46" height="90" rx="3" fill="#9DB7C6"/>
+  <rect x="376" y="140" width="46" height="230" rx="3" fill="#9DB7C6"/>
+  <rect x="458" y="210" width="46" height="160" rx="3" fill="#9DB7C6"/>
+  <rect x="540" y="110" width="46" height="260" rx="3" fill="#9DB7C6"/>
+  <rect x="622" y="230" width="46" height="140" rx="3" fill="#9DB7C6"/>
+  <text x="400" y="430" font-size="13" fill="#8A97A0" text-anchor="middle" font-family="sans-serif">איור סכמטי — תרשים עמודות</text>
+</svg>

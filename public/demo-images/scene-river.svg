@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="800" height="450">
+  <!-- Abstract placeholder. No sigil, crest, real-world imagery or coordinates. -->
+  <rect width="800" height="450" fill="#EDF3F5"/>
+  <path d="M0 300 Q200 250 400 300 T800 300 L800 450 L0 450 Z" fill="#AFC9D6"/>
+  <path d="M0 330 Q200 285 400 330 T800 330 L800 450 L0 450 Z" fill="#93B4C6"/>
+  <rect x="300" y="268" width="200" height="14" rx="5" fill="#9E8E78"/>
+  <rect x="330" y="282" width="10" height="42" fill="#8A7B67"/>
+  <rect x="460" y="282" width="10" height="42" fill="#8A7B67"/>
+  <circle cx="150" cy="200" r="26" fill="#D6DEE3"/>
+  <circle cx="650" cy="175" r="18" fill="#D6DEE3"/>
+  <text x="400" y="430" font-size="13" fill="#8A97A0" text-anchor="middle" font-family="sans-serif">איור סכמטי — מעבר נהר</text>
+</svg>

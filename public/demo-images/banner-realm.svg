@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 260" width="800" height="260">
+  <!-- Abstract placeholder. No sigil, crest or imagery from any published work. -->
+  <rect width="800" height="260" fill="#EFEBE4"/>
+  <rect x="90" y="110" width="52" height="120" fill="#C9BEAC"/>
+  <rect x="200" y="78" width="52" height="152" fill="#B9AC97"/>
+  <rect x="310" y="128" width="52" height="102" fill="#C9BEAC"/>
+  <rect x="430" y="96" width="52" height="134" fill="#B9AC97"/>
+  <rect x="548" y="120" width="52" height="110" fill="#C9BEAC"/>
+  <rect x="0" y="228" width="800" height="32" fill="#A2957F"/>
+  <text x="400" y="42" font-size="15" fill="#6B6052" text-anchor="middle" font-family="sans-serif">איור סכמטי — קו רקיע עירוני</text>
+</svg>

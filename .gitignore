@@ -1,0 +1,49 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+dist-ssr/
+*.local
+
+# Environment
+.env
+.env.*
+!.env.example
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# OS junk
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# Editor / tooling folders
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Claude Code
+.claude/
+CLAUDE.local.md
+
+# Dataset dump helper. It must stay in the repo so the `@/` tsconfig alias resolves, but it is a
+# development aid and is not part of the demo. Everything else that was here — the Playwright
+# harnesses, the patch scripts, the licence builder — now lives outside the repo entirely, in
+# ../got-showcase-review/tools/.
+_dump.ts
+
+# tools/make_svgs.py is DELIBERATELY NOT ignored: it generates public/demo-images and belongs
+# with the demo so the artwork can be regenerated from source.

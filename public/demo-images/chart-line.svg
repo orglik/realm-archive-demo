@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="800" height="450">
+  <!-- Abstract placeholder. No sigil, crest, real-world imagery or coordinates. -->
+  <rect width="800" height="450" fill="#F7FAFB"/>
+  <line x1="90" y1="370" x2="730" y2="370" stroke="#C3CDD4" stroke-width="2"/>
+  <line x1="90" y1="70" x2="90" y2="370" stroke="#C3CDD4" stroke-width="2"/>
+  <polyline points="110,320 210,250 310,280 410,170 510,210 610,120 710,150" fill="none" stroke="#7FA6BC" stroke-width="4" stroke-linejoin="round"/>
+  <polyline points="110,350 210,330 310,340 410,300 510,310 610,270 710,285" fill="none" stroke="#C9A98E" stroke-width="3" stroke-dasharray="7 6"/>
+  <text x="400" y="430" font-size="13" fill="#8A97A0" text-anchor="middle" font-family="sans-serif">איור סכמטי — תרשים מגמה</text>
+</svg>

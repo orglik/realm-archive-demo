@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="800" height="450">
+  <!-- Abstract placeholder. No sigil, crest, real-world imagery or coordinates. -->
+  <rect width="800" height="450" fill="#E9F0F3"/>
+  <polygon points="0,200 240,200 300,380 0,380" fill="#BBC8CF"/>
+  <polygon points="800,200 560,200 500,380 800,380" fill="#BBC8CF"/>
+  <rect x="0" y="330" width="800" height="120" fill="#A9C4D2"/>
+  <polygon points="360,290 400,230 440,290" fill="#F2F6F8"/>
+  <rect x="392" y="230" width="4" height="62" fill="#7E8D99"/>
+  <polygon points="300,320 330,285 360,320" fill="#F2F6F8"/>
+  <text x="400" y="430" font-size="13" fill="#8A97A0" text-anchor="middle" font-family="sans-serif">איור סכמטי — מפרץ צר</text>
+</svg>
