@@ -197,7 +197,10 @@ function TreeGuides({ guides }: { guides: boolean[] }) {
   if (guides.length === 0) return null
   const line = 'bg-[#C8D8E0]'
   return (
-    <div className="flex shrink-0 self-stretch" aria-hidden>
+    // Hidden below sm: the rails are drawn per TABLE COLUMN, so once rows become grid cards the
+    // geometry they depend on is gone and they render as stray stubs. The parent caption below
+    // carries the same information in a form that survives the layout change.
+    <div className="hidden sm:flex shrink-0 self-stretch" aria-hidden>
       {guides.map((cont, i) => {
         const isSelf = i === guides.length - 1
         return (
@@ -233,7 +236,7 @@ function LinkedRowCaption(
           <a
             href={`/page/${p.id}/view`}
             onClick={(e) => { e.preventDefault(); onNav(p.id) }}
-            className="hover:text-primary transition-colors"
+            className="tap-compact hover:text-primary transition-colors"
           >
             {p.title}
           </a>
@@ -855,11 +858,14 @@ export function ContentTable() {
           // source serves both shapes — there is no separate mobile list to keep in sync.
           <div className="overflow-x-visible sm:overflow-x-auto
             max-sm:[&_table]:block max-sm:[&_thead]:hidden max-sm:[&_tbody]:block
-            max-sm:[&_tr]:block max-sm:[&_tr]:rounded-xl max-sm:[&_tr]:border
-            max-sm:[&_tr]:border-border max-sm:[&_tr]:mb-3 max-sm:[&_tr]:bg-card
-            max-sm:[&_td]:block max-sm:[&_td]:w-auto max-sm:[&_td]:border-0
-            max-sm:[&_td]:px-4 max-sm:[&_td]:py-2 max-sm:[&_td:first-child]:pt-4
-            max-sm:[&_td:last-child]:pb-4">
+            max-sm:[&_tr]:flex max-sm:[&_tr]:flex-wrap max-sm:[&_tr]:items-center
+            max-sm:[&_tr]:rounded-xl max-sm:[&_tr]:border max-sm:[&_tr]:border-border
+            max-sm:[&_tr]:mb-2.5 max-sm:[&_tr]:bg-card
+            max-sm:[&_td]:block max-sm:[&_td]:w-auto max-sm:[&_td]:border-0 max-sm:[&_td]:min-w-0
+            max-sm:[&_td]:px-3.5 max-sm:[&_td]:py-1
+            max-sm:[&_td:first-child]:basis-full max-sm:[&_td:first-child]:pt-2.5
+            max-sm:[&_td:last-child]:ms-auto max-sm:[&_td:last-child]:pb-2.5
+            max-sm:[&_td.hidden]:!hidden">
             <Table>
               <TableHeader>
                 <TableRow className="bg-muted/20 hover:bg-muted/20 border-b border-border">
@@ -1002,14 +1008,19 @@ export function ContentTable() {
                                 a real parentTopicId): that row renders unindented, indistinguishable
                                 from a true root topic, so this caption is the only remaining signal it
                                 actually has a parent currently filtered out of view. */}
-                            {page.type === 'topic' && page.parentTopicId && depth === 0 && (() => {
+                            {page.type === 'topic' && page.parentTopicId && (() => {
                               const parent = allPages.find((p) => p.id === page.parentTopicId)
                               if (!parent) return null
+                              // depth === 0 is the orphaned-root case: the parent is filtered out of
+                              // view, so this caption is the ONLY signal and shows at every width.
+                              // depth > 0 rows are normally identified by the tree rails, which are
+                              // hidden below sm — so there the caption stands in for them.
+                              const onlyOnPhone = depth > 0 ? ' sm:hidden' : ''
                               return (
                                 <a
                                   href={`/page/${parent.id}/view`}
                                   onClick={(e) => { e.preventDefault(); navigate(`/page/${parent.id}/view`) }}
-                                  className="mt-0.5 flex items-center gap-1 text-[11px] text-muted-foreground hover:text-primary transition-colors font-heebo w-fit"
+                                  className={`tap-compact mt-0.5 flex items-center gap-1 text-[11px] text-muted-foreground hover:text-primary transition-colors font-heebo w-fit${onlyOnPhone}`}
                                   title={`דף נושא בן — תחת: ${parent.title}`}
                                 >
                                   {/* ↳ flipped for RTL via CSS transform, not a different glyph. */}
