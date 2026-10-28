@@ -120,14 +120,18 @@ export function HomePage() {
                 key={key}
                 type="button"
                 onClick={() => setTab(key)}
-                className="pb-2.5 border-b-2 -mb-px transition-colors"
+                // inline-flex + gap, not a whitespace text node: the coarse-pointer rule
+                // turns this button into a flex container, and flex discards whitespace-only
+                // text nodes — which is exactly how the count ended up glued to the label.
+                className="inline-flex items-baseline gap-1.5 pb-2.5 border-b-2 -mb-px transition-colors"
                 style={{
                   borderColor: tab === key ? 'var(--lp-tab-underline)' : 'transparent',
                   color: tab === key ? 'var(--lp-ink)' : 'var(--lp-faint)',
                   fontWeight: tab === key ? 700 : 400,
                 }}
               >
-                {label} <span className="text-[12.5px]" style={{ color: 'var(--lp-label)' }}>{count}</span>
+                <span>{label}</span>
+                <span className="text-[12.5px]" style={{ color: 'var(--lp-label)' }}>{count}</span>
               </button>
             ))}
           </nav>
