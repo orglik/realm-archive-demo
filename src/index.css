@@ -191,6 +191,24 @@
     justify-content: center;
   }
 
+  /* Secondary inline captions (a row's parent link, "מקושר אל:") are links, but inflating a 16px
+     caption to a 40px BOX bloats every card that has one. Release the box floor and grow the HIT
+     AREA instead: 16px of text plus 12px above and below is a 40px touch target that costs no
+     layout height. Only for captions — a primary control still gets a real 40px box. */
+  /* `a[href]` is (0,1,1) and outranks a bare class, so the floor above would still win. Matching
+     the attribute too makes this (0,2,1) and later in source order. */
+  a[href].tap-compact,
+  .tap-compact {
+    min-height: 0;
+    position: relative;
+  }
+  .tap-compact::after {
+    content: '';
+    position: absolute;
+    inset-block: -12px;
+    inset-inline: 0;
+  }
+
   /* A link that is laid out as a block/flex box is a card or a row — it already has its own
      height and must not be forced into a centred inline-flex. */
   a[href]:not(:where(.block, .flex, .inline-flex, .grid)) {
