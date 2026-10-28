@@ -8,7 +8,7 @@ A knowledge-page editor where analysts write topic, event and reference pages, a
 
 ## Live demo
 
-link added after deploy
+https://orglik.github.io/realm-archive-demo/
 
 ## What it does
 
@@ -97,7 +97,7 @@ Heebo, Noto Sans Hebrew and IBM Plex Mono are bundled via `@fontsource` and are 
 
 ## הדגמה חיה
 
-link added after deploy
+https://orglik.github.io/realm-archive-demo/
 
 ## מה הוא עושה
 
