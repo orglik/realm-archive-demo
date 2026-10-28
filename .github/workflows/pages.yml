@@ -1,0 +1,69 @@
+# Build with npm and publish to GitHub Pages.
+#
+# Every action is pinned to the full commit SHA of its latest release tag (the tag is kept in the
+# trailing comment for readability). A tag can be moved; a SHA cannot, so this is what stops a
+# compromised or re-pointed tag from running in this repo.
+#
+# No secrets are used. GITHUB_TOKEN is granted the minimum the Pages deployment needs and nothing
+# else. The site is built with `base: './'` (vite.config.ts) and a hash router, so it works from
+# any deploy path without the repository name being hardcoded anywhere.
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read      # checkout only
+  pages: write        # create the deployment
+  id-token: write     # OIDC token the deploy step exchanges
+
+# One deployment at a time. In-progress runs are NOT cancelled: cancelling midway can leave a
+# half-published site.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Set up Node
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      - name: Configure Pages
+        uses: actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d # v6.0.0
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    # Deploy ONLY when the repository is public. While it is private this job is skipped, so a
+    # manual run (or a push) can still build and prove the pipeline without publishing anything.
+    # If the payload were ever missing `repository`, this evaluates false and the deploy is
+    # skipped — the safe direction.
+    if: github.event.repository.private == false
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346 # v5.0.1

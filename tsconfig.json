@@ -1,0 +1,8 @@
+{
+  // Root config used by a bare `tsc --noEmit` (and editors/IDEs): it actually type-checks ./src with
+  // the app options. The OLD root was a solution-only config (`files: []` + references) so a bare
+  // `tsc --noEmit` silently checked NOTHING — a real trap. The full multi-project build/check
+  // (app + node) lives in tsconfig.build.json and runs via `tsc -b` (see package.json build/typecheck).
+  "extends": "./tsconfig.app.json",
+  "include": ["src"]
+}

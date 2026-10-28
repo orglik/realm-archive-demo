@@ -1,0 +1,200 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* ── Design system palette ─────────────────────────────── */
+  --background:         #e8f0fa;       /* page bg */
+  --foreground:         #03051B;       /* text & headings */
+
+  --card:               #FAFCFE;       /* card bg */
+  --card-foreground:    #03051B;
+
+  --popover:            #FAFCFE;
+  --popover-foreground: #03051B;
+
+  --primary:            #21AEFF;       /* action / button color */
+  --primary-foreground: #ffffff;       /* white text on blue action */
+
+  --secondary:          #F0F8FF;       /* tag chip bg */
+  --secondary-foreground: #458FFF;     /* tag chip text */
+
+  --muted:              #F0F8FF;       /* muted surface */
+  --muted-foreground:   #64748b;       /* muted text */
+
+  --accent:             #458FFF;       /* links */
+  --accent-foreground:  #FAFCFE;
+
+  --destructive:        oklch(0.577 0.245 27.325);
+
+  --border:             #E6E6E6;       /* default border */
+  --input:              #E2EDF8;       /* input / card border */
+  --ring:               #21AEFF;
+
+  --radius: 0.625rem;
+
+  /* ── Extended tokens ───────────────────────────────────── */
+  --viewer-wash:   #F0FBFF;            /* hero zone tinted background */
+  --card-border:   #E2EDF8;            /* card-specific border */
+  --link:          #458FFF;            /* links and tags */
+  --tag-bg:        #F0F8FF;            /* tag chip background */
+
+  /* ── Sidebar tokens ────────────────────────────────────── */
+  --sidebar:                    #F0F8FF;
+  --sidebar-foreground:         #03051B;
+  --sidebar-primary:            #21AEFF;
+  --sidebar-primary-foreground: #03051B;
+  --sidebar-accent:             #FAFCFE;
+  --sidebar-accent-foreground:  #21AEFF;
+  --sidebar-border:             #E6E6E6;
+  --sidebar-ring:               #21AEFF;
+
+  /* ── Linked-pages ribbon + העמקה dossier palette (--lp-*) ──
+     Scoped token group for the קישור דפים ribbon and העמקה index redesign. Deliberately NOT merged
+     into the global palette: these are a cooler navy/grey scale that overlaps but doesn't match the
+     existing tokens, so folding them in would shift the timeline/other cards. The shared blue is the
+     existing --primary (#21AEFF); red, where needed, reuses the timeline's #D6453D. */
+  --lp-ink:            #10233A;   /* primary title ink (navy) */
+  --lp-ink-muted:      #5A7186;   /* control glyphs / secondary text */
+  --lp-meta:           #7C8FA3;   /* meta lines */
+  --lp-label:          #8FA3B8;   /* micro-labels, chip meta, group labels */
+  --lp-faint:          #B4C3D1;   /* counts, chevrons */
+  --lp-hairline:       #E4EAF0;   /* band/card/chip hairline */
+  --lp-hairline-inner: #EEF2F6;   /* inner row dividers */
+  --lp-control:        #DCE4EC;   /* control (arrow) borders, thumb borders */
+  --lp-blue-label:     #0E7BBB;   /* kickers / links */
+  --lp-blue-num:       #5FC0F5;   /* section numbers */
+  --lp-blue-hover:     #9FD3F1;   /* hover border */
+  --lp-anchor-bg:      #F2F8FC;   /* anchor zone bg */
+  --lp-ribbon-bg:      #FBFDFE;   /* ribbon band bg */
+  --lp-chip-hover:     #F8FCFF;   /* chip hover bg */
+  --lp-row-hover:      #FAFCFE;   /* dossier row hover bg */
+  --lp-thumb-bg:       #E9EFF5;   /* image placeholder base */
+  --lp-thumb-border:   #D2E4F0;   /* anchor thumbnail border */
+  --lp-plate:          linear-gradient(160deg, #16304C, #0E1E31); /* empty-image dark plate */
+
+  /* Added for the reader-facing home/index page (Session H) — genuinely missing from this group, not
+     approximated from an existing value: --lp-blue-label (#0E7BBB) is more saturated/teal and serves a
+     different role (kickers/links inside the ribbon). This group now powers more than the ribbon; the
+     "lp" name is intentionally left as-is per product decision — a rename is a separate, later call. */
+  --lp-accent:         #4E7FC1;   /* home page: tint pill text, sort/filter accents, "outline" pill border */
+  --lp-tab-underline:  #6E9BD6;   /* home page: active tab underline */
+
+  /* ── Chart tokens (required by shadcn) ─────────────────── */
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6   0.118 184.704);
+  --chart-3: oklch(0.398 0.07  227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+}
+
+/* ── Tailwind v4 theme mapping ────────────────────────────── */
+@theme inline {
+  /* Fonts */
+  --font-sans:  'Noto Sans Hebrew', system-ui, sans-serif;
+  --font-heebo: 'Heebo', system-ui, sans-serif;
+  /* Numbers / latin micro-labels only (section numbers, kickers, DOC/BUNDLE plates). Falls back to
+     the system monospace stack if IBM Plex Mono fails to load — these are short, non-wrapping. */
+  --font-mono:  'IBM Plex Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+
+  /* Core colors */
+  --color-background:             var(--background);
+  --color-foreground:             var(--foreground);
+  --color-card:                   var(--card);
+  --color-card-foreground:        var(--card-foreground);
+  --color-popover:                var(--popover);
+  --color-popover-foreground:     var(--popover-foreground);
+  --color-primary:                var(--primary);
+  --color-primary-foreground:     var(--primary-foreground);
+  --color-secondary:              var(--secondary);
+  --color-secondary-foreground:   var(--secondary-foreground);
+  --color-muted:                  var(--muted);
+  --color-muted-foreground:       var(--muted-foreground);
+  --color-accent:                 var(--accent);
+  --color-accent-foreground:      var(--accent-foreground);
+  --color-destructive:            var(--destructive);
+  --color-border:                 var(--border);
+  --color-input:                  var(--input);
+  --color-ring:                   var(--ring);
+
+  /* Extended tokens */
+  --color-viewer-wash:  var(--viewer-wash);
+  --color-card-border:  var(--card-border);
+  --color-link:         var(--link);
+  --color-tag-bg:       var(--tag-bg);
+
+  /* Chart */
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+
+  /* Sidebar */
+  --color-sidebar:                        var(--sidebar);
+  --color-sidebar-foreground:             var(--sidebar-foreground);
+  --color-sidebar-primary:                var(--sidebar-primary);
+  --color-sidebar-primary-foreground:     var(--sidebar-primary-foreground);
+  --color-sidebar-accent:                 var(--sidebar-accent);
+  --color-sidebar-accent-foreground:      var(--sidebar-accent-foreground);
+  --color-sidebar-border:                 var(--sidebar-border);
+  --color-sidebar-ring:                   var(--sidebar-ring);
+
+  /* Radius scale */
+  --radius-sm:  calc(var(--radius) * 0.6);
+  --radius-md:  calc(var(--radius) * 0.8);
+  --radius-lg:  var(--radius);
+  --radius-xl:  calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/* ── Touch tap targets ───────────────────────────────────────────────────────
+   Guarded by `pointer: coarse`, so it NEVER matches a mouse and desktop rendering is untouched
+   byte for byte. On a finger device every real control gets a 40px minimum tappable box.
+
+   `min-height` has no effect on a non-replaced inline box, which is exactly right here: an inline
+   link inside a paragraph is running text, not a control, and must not be inflated. Controls that
+   are inline-level get `inline-flex` + centring so the floor applies without moving their label.  */
+@media (pointer: coarse) {
+  button,
+  summary,
+  select,
+  [role='button'],
+  a[href],
+  /* Text-entry inputs are tap targets too. Checkbox/radio have their own hit rules, and a
+     visually hidden file input is never tapped directly — its label or button is. */
+  input:not([type='checkbox'], [type='radio'], [type='file'], [type='hidden']) {
+    min-height: 40px;
+  }
+
+  button,
+  summary,
+  [role='button'] {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* A link that is laid out as a block/flex box is a card or a row — it already has its own
+     height and must not be forced into a centred inline-flex. */
+  a[href]:not(:where(.block, .flex, .inline-flex, .grid)) {
+    display: inline-flex;
+    align-items: center;
+  }
+}

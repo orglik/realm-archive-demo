@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 260" width="800" height="260">
+  <!-- Abstract placeholder. No sigil, crest or imagery from any published work. -->
+  <rect width="800" height="260" fill="#E8EFF3"/>
+  <path d="M0 200 L140 120 L250 180 L390 90 L520 170 L650 110 L800 185 L800 260 L0 260 Z" fill="#C3D4DD"/>
+  <path d="M0 225 L170 170 L300 215 L450 155 L600 205 L800 150 L800 260 L0 260 Z" fill="#9FB6C2"/>
+  <circle cx="660" cy="62" r="20" fill="#F7FBFD"/>
+  <text x="400" y="42" font-size="15" fill="#5C7280" text-anchor="middle" font-family="sans-serif">איור סכמטי — נוף צפוני</text>
+</svg>

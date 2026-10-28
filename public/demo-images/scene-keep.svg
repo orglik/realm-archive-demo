@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="800" height="450">
+  <!-- Abstract placeholder. No sigil, crest, real-world imagery or coordinates. -->
+  <rect width="800" height="450" fill="#EEF2F4"/>
+  <rect x="250" y="150" width="300" height="230" fill="#C3CDD4"/>
+  <rect x="210" y="110" width="60" height="270" fill="#AEBAC3"/>
+  <rect x="530" y="110" width="60" height="270" fill="#AEBAC3"/>
+  <polygon points="240,110 270,70 300,110" fill="#8E9DA8"/>
+  <polygon points="520,110 550,70 580,110" fill="#8E9DA8"/>
+  <rect x="370" y="270" width="60" height="110" rx="30" fill="#7E8D99"/>
+  <rect x="0" y="378" width="800" height="24" fill="#9AA8B1"/>
+  <text x="400" y="430" font-size="13" fill="#8A97A0" text-anchor="middle" font-family="sans-serif">איור סכמטי — מעוז מבוצר</text>
+</svg>

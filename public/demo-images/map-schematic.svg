@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="800" height="450">
+  <!-- Abstract placeholder. No sigil, crest, real-world imagery or coordinates. -->
+  <rect width="800" height="450" fill="#F4F1EA"/>
+  <path d="M90 70 L330 50 L380 210 L200 300 L70 230 Z" fill="#D9D2C2"/>
+  <path d="M400 90 L690 60 L720 250 L470 300 L390 200 Z" fill="#CFC7B4"/>
+  <path d="M200 310 L520 320 L560 400 L180 395 Z" fill="#E1DCCE"/>
+  <path d="M360 60 L395 300" stroke="#A89C80" stroke-width="3" stroke-dasharray="9 7" fill="none"/>
+  <circle cx="230" cy="180" r="7" fill="#7E7055"/>
+  <circle cx="560" cy="170" r="7" fill="#7E7055"/>
+  <circle cx="370" cy="360" r="7" fill="#7E7055"/>
+  <text x="400" y="430" font-size="13" fill="#8C8268" text-anchor="middle" font-family="sans-serif">איור סכמטי — מפת אזורים (אינה מפה אמיתית)</text>
+</svg>
