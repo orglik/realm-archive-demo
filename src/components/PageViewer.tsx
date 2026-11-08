@@ -178,6 +178,15 @@ function SectionNavStrip({
           <a
             key={s.id}
             href={`#${s.id}`}
+            // Under the hash router (createHashRouter, App.tsx) the WHOLE fragment is the route, so
+            // letting the browser follow href="#section-1" would replace "/page/:id/view" with
+            // "/section-1" — no such route, no catch-all, and React Router renders its own 404
+            // instead of the page. preventDefault keeps the URL as it is and we do the jump
+            // ourselves; scroll-mt-24 on the target section already offsets the two sticky bars.
+            onClick={(e) => {
+              e.preventDefault()
+              document.getElementById(s.id)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+            }}
             className="flex items-center gap-1.5 px-5 py-3.5 text-sm whitespace-nowrap shrink-0
               hover:bg-[#F0FBFF] transition-colors text-foreground/60 hover:text-primary font-heebo"
           >
