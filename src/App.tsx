@@ -35,9 +35,34 @@ function AppHeader() {
   )
 }
 
+// Shown for a hash that matches no route (a stale bookmark, a mistyped link), and as the
+// errorElement so a reader never sees React Router's developer-facing default error page on a
+// public demo. The link is a plain anchor, not <Link>: under the hash router the whole fragment
+// IS the route, so "#/home" is the correct, complete target, and an anchor cannot depend on
+// router context that an error boundary may be rendered outside of.
+function NotFound() {
+  return (
+    <div dir="rtl" className="min-h-screen bg-background flex items-center justify-center px-4">
+      <div className="text-center">
+        <p className="text-2xl font-extrabold text-foreground font-heebo">לא נמצא</p>
+        <p className="mt-2 text-sm text-muted-foreground font-heebo">
+          הדף שחיפשת אינו קיים, או שהקישור שגוי.
+        </p>
+        <a
+          href="#/home"
+          className="mt-5 inline-block text-sm text-primary hover:underline font-heebo"
+        >
+          חזרה לדף הבית ←
+        </a>
+      </div>
+    </div>
+  )
+}
+
 const router = createHashRouter([
   {
     path: '/',
+    errorElement: <NotFound />,
     element: (
       <div className="min-h-screen bg-background">
         <AppHeader />
@@ -50,15 +75,18 @@ const router = createHashRouter([
   {
     path: '/home',
     element: <HomePage />,
+    errorElement: <NotFound />,
   },
   {
     path: '/page/:id/edit',
     element: <PageEditorRouter />,
+    errorElement: <NotFound />,
   },
   {
     // ANALYST viewer: edit/list/reader-view controls, renders drafts for preview.
     path: '/page/:id/view',
     element: <PageViewerPage />,
+    errorElement: <NotFound />,
   },
   {
     // READER viewer: public chrome, one way back to /home, published-only.
@@ -66,6 +94,13 @@ const router = createHashRouter([
     // unreachable here rather than conditionally hidden.
     path: '/read/:id',
     element: <ReadPage />,
+    errorElement: <NotFound />,
+  },
+  {
+    // Catch-all: anything else renders the not-found page instead of falling through to the
+    // router's own 404 screen.
+    path: '*',
+    element: <NotFound />,
   },
 ])
 
