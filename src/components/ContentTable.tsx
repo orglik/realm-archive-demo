@@ -1,6 +1,6 @@
 import { useState, useCallback, useRef, useEffect } from 'react'
 import { createPortal } from 'react-dom'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 import type { ContentPage, TopicPage, EventPage, ReferencePage } from '@/types/contentPage'
 import { formatDate, formatRelativeTime } from '@/utils/dateUtils'
 import { hasUnpublishedChanges } from '@/utils/pageUtils'
@@ -225,7 +225,7 @@ function TreeGuides({ guides }: { guides: boolean[] }) {
 // because the read-only VIEWER is published-only — so this explains why a listed link won't appear on
 // the live page (the management list intentionally shows the full picture, drafts included).
 function LinkedRowCaption(
-  { label, pages, onNav }: { label: string; pages: ContentPage[]; onNav: (id: string) => void },
+  { label, pages }: { label: string; pages: ContentPage[] },
 ) {
   if (pages.length === 0) return null
   return (
@@ -233,13 +233,12 @@ function LinkedRowCaption(
       <span>{label}</span>
       {pages.map((p, i) => (
         <span key={p.id}>
-          <a
-            href={`/page/${p.id}/view`}
-            onClick={(e) => { e.preventDefault(); onNav(p.id) }}
+          <Link
+            to={`/page/${p.id}/view`}
             className="tap-compact hover:text-primary transition-colors"
           >
             {p.title}
-          </a>
+          </Link>
           {p.status === 'draft' && <span className="text-muted-foreground/60"> (טיוטה)</span>}
           {p.status === 'archived' && <span className="text-muted-foreground/60"> (בארכיון)</span>}
           {i < pages.length - 1 ? ',' : ''}
@@ -996,13 +995,12 @@ export function ContentTable() {
                             <span className="shrink-0 size-5" aria-hidden />
                           )}
                           <div className="min-w-0">
-                            <a
-                              href={`/page/${page.id}/view`}
+                            <Link
+                              to={`/page/${page.id}/view`}
                               className="font-semibold text-sm text-foreground hover:text-primary transition-colors"
-                              onClick={(e) => { e.preventDefault(); navigate(`/page/${page.id}/view`) }}
                             >
                               {page.title || <span className="font-normal italic text-muted-foreground">ללא שם</span>}
-                            </a>
+                            </Link>
                             {/* Redundant with indentation whenever the row is genuinely nested — omit
                                 there. Kept ONLY for the orphaned-root case (depth === 0 despite having
                                 a real parentTopicId): that row renders unindented, indistinguishable
@@ -1017,9 +1015,8 @@ export function ContentTable() {
                               // hidden below sm — so there the caption stands in for them.
                               const onlyOnPhone = depth > 0 ? ' sm:hidden' : ''
                               return (
-                                <a
-                                  href={`/page/${parent.id}/view`}
-                                  onClick={(e) => { e.preventDefault(); navigate(`/page/${parent.id}/view`) }}
+                                <Link
+                                  to={`/page/${parent.id}/view`}
                                   className={`tap-compact mt-0.5 flex items-center gap-1 text-[11px] text-muted-foreground hover:text-primary transition-colors font-heebo w-fit${onlyOnPhone}`}
                                   title={`דף נושא בן — תחת: ${parent.title}`}
                                 >
@@ -1028,7 +1025,7 @@ export function ContentTable() {
                                   <span className="truncate max-w-[16rem]">
                                     תחת: דף נושא {parent.title}{parent.status === 'draft' ? ' (טיוטה)' : parent.status === 'archived' ? ' (בארכיון)' : ''}
                                   </span>
-                                </a>
+                                </Link>
                               )
                             })()}
                             {/* Topic → events is now shown by NESTING the events as tree rows (option A),
@@ -1051,7 +1048,6 @@ export function ContentTable() {
                                 <LinkedRowCaption
                                   label="מקושר אל:"
                                   pages={captionTopics}
-                                  onNav={(id) => navigate(`/page/${id}/view`)}
                                 />
                               )
                             })()}
