@@ -4,6 +4,13 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/* A pointer that cannot hover — a touch screen, most styluses, a TV remote.
+   Controls revealed by `group-hover:` are unreachable there: the hover state never fires, and an
+   `opacity-0` element still accepts taps, so the control ends up invisible AND tappable. Pair every
+   hover-reveal with `touch:` so the same control is simply always visible where hovering is
+   impossible. Nothing changes for a mouse. */
+@custom-variant touch (@media (hover: none));
+
 :root {
   /* ── Design system palette ─────────────────────────────── */
   --background:         #e8f0fa;       /* page bg */

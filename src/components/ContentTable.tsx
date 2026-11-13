@@ -333,9 +333,12 @@ function GateCounter({ gate }: { gate: Gate }) {
   const [open, setOpen] = useState(false)
   const [hovering, setHovering] = useState(false)
   const [pos, setPos] = useState<{ top: number; left: number } | null>(null)
-  const triggerRef = useRef<HTMLSpanElement>(null)
+  const triggerRef = useRef<HTMLButtonElement>(null)
+  const [focused, setFocused] = useState(false)
 
-  const visible = !complete && (hovering || open) && gate.missing.length > 0
+  // Three ways in, so no input device is left out: hover (mouse), click/tap (touch), focus
+  // (keyboard). The trigger is a real <button> rather than a <span> precisely so it is tabbable.
+  const visible = !complete && (hovering || open || focused) && gate.missing.length > 0
 
   function calcPos() {
     if (!triggerRef.current) return
@@ -362,15 +365,19 @@ function GateCounter({ gate }: { gate: Gate }) {
 
   return (
     <>
-      <span
+      <button
+        type="button"
         ref={triggerRef}
+        aria-expanded={visible}
         className="text-[11px] font-medium text-muted-foreground underline decoration-dotted underline-offset-2 cursor-pointer select-none"
         onMouseEnter={() => { setHovering(true); calcPos() }}
         onMouseLeave={() => setHovering(false)}
+        onFocus={() => { setFocused(true); calcPos() }}
+        onBlur={() => setFocused(false)}
         onClick={() => { setOpen((o) => !o); calcPos() }}
       >
         {gate.done}/{gate.total} חובה
-      </span>
+      </button>
       {visible && pos && createPortal(
         <div
           style={{ position: 'fixed', top: pos.top, left: pos.left, zIndex: 9999 }}

@@ -50,7 +50,7 @@ export function HeroImageField({ value, onChange }: Props) {
             <button
               onClick={() => { onChange(null); setError(null) }}
               aria-label="הסר תמונת שער"
-              className="absolute top-1.5 left-1.5 bg-black/60 hover:bg-black/80 text-white rounded-full p-0.5 opacity-0 group-hover:opacity-100 transition-opacity"
+              className="absolute top-1.5 left-1.5 bg-black/60 hover:bg-black/80 text-white rounded-full p-0.5 opacity-0 group-hover:opacity-100 touch:opacity-100 transition-opacity"
             >
               <X className="size-3.5" />
             </button>

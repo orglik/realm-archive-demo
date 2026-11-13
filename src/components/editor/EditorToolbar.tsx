@@ -27,6 +27,12 @@ export function EditorToolbar({
   hasPendingChanges,
   gate,
 }: Props) {
+  // WHY publishing is blocked is content, not decoration: it used to live in a `group-hover:`
+  // tooltip, which a touch device can never trigger and a keyboard user can never focus. It is now
+  // a visible line, rendered at every viewport, on its own row UNDER the control row so the
+  // button row's height is unchanged when nothing is blocked.
+  const blocked = !publishReady && !!gate && gate.missing.length > 0
+
   return (
     <header className="sticky top-0 z-30 bg-card border-b border-border shadow-sm">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between gap-4">
@@ -97,35 +103,32 @@ export function EditorToolbar({
               : 'שמירת טיוטה'}
           </Button>
 
-          <div className="relative group">
-            <Button
-              size="sm"
-              onClick={onPublish}
-              disabled={!publishReady || publishStatus === 'saving'}
-              className="font-heebo"
-              style={{ backgroundColor: publishReady ? '#21AEFF' : undefined }}
-            >
-              {publishStatus === 'saving'
-                ? <Loader2 className="size-3.5 animate-spin" />
-                : 'פרסום'}
-            </Button>
-            {!publishReady && gate && gate.missing.length > 0 && (
-              // Anchored BELOW the button, not above: the toolbar is sticky top-0, so a bottom-full
-              // tooltip rendered off the top of the viewport and showed only a clipped sliver.
-              // On a phone the publish button sits close to the viewport edge, so a 192px box
-              // centred on it (left-1/2 + -translate-x-1/2) hung ~51px off-screen and clipped the
-              // one message that explains WHY publishing is blocked. Below sm it is anchored to the
-              // button's inline-end instead and allowed to wrap; sm+ keeps the original centring.
-              <div className="absolute top-full mt-2 end-0 lg:end-auto lg:left-1/2 lg:-translate-x-1/2 hidden group-hover:block
-                bg-foreground text-white text-[11px] rounded-lg px-3 py-2 min-w-[12rem]
-                max-w-[calc(100vw-2rem)] text-right
-                leading-relaxed shadow-xl pointer-events-none z-50 whitespace-normal lg:whitespace-nowrap">
-                חסרים: {gate.missing.join(', ')}
-              </div>
-            )}
-          </div>
+          <Button
+            size="sm"
+            onClick={onPublish}
+            disabled={!publishReady || publishStatus === 'saving'}
+            className="font-heebo"
+            style={{ backgroundColor: publishReady ? '#21AEFF' : undefined }}
+            aria-describedby={blocked ? 'publish-blocked-reason' : undefined}
+          >
+            {publishStatus === 'saving'
+              ? <Loader2 className="size-3.5 animate-spin" />
+              : 'פרסום'}
+          </Button>
         </div>
       </div>
+
+      {blocked && (
+        <div className="border-t border-border bg-muted/40">
+          <p
+            id="publish-blocked-reason"
+            className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-1.5 text-[11px] leading-relaxed
+              text-muted-foreground text-right font-heebo"
+          >
+            לא ניתן לפרסם — חסרים: {gate!.missing.join(', ')}
+          </p>
+        </div>
+      )}
     </header>
   )
 }

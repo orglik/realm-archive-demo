@@ -125,7 +125,8 @@ export function KeyPointsEditor({ value, onChange }: Props) {
                       <span className="flex-1 text-sm text-foreground text-right leading-snug pt-0.5">{pt}</span>
                       <button
                         onClick={() => removePoint(i, j)}
-                        className="text-muted-foreground hover:text-red-500 transition-colors opacity-0 group-hover:opacity-100 shrink-0 mt-0.5"
+                        aria-label="הסר נקודה"
+                        className="text-muted-foreground hover:text-red-500 transition-colors opacity-0 group-hover:opacity-100 touch:opacity-100 shrink-0 mt-0.5"
                       >
                         <X className="size-3.5" />
                       </button>

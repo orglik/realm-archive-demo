@@ -45,7 +45,8 @@ export function MediaSection({ images, onChange }: Props) {
               />
               <button
                 onClick={() => remove(img.id)}
-                className="absolute top-1.5 left-1.5 bg-black/60 hover:bg-black/80 text-white rounded-full p-0.5 opacity-0 group-hover:opacity-100 transition-opacity"
+                aria-label="הסר תמונה"
+                className="absolute top-1.5 left-1.5 bg-black/60 hover:bg-black/80 text-white rounded-full p-0.5 opacity-0 group-hover:opacity-100 touch:opacity-100 transition-opacity"
               >
                 <X className="size-3.5" />
               </button>
