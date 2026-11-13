@@ -35,7 +35,7 @@ FILES['scene-keep.svg'] = [
     '  <polygon points="520,110 550,70 580,110" fill="#8E9DA8"/>',
     '  <rect x="370" y="270" width="60" height="110" rx="30" fill="#7E8D99"/>',
     '  <rect x="0" y="378" width="800" height="24" fill="#9AA8B1"/>',
-    cap('איור סכמטי — מעוז מבוצר'), '</svg>']
+    '</svg>']
 
 # 4 — a river crossing
 FILES['scene-river.svg'] = [
@@ -48,7 +48,7 @@ FILES['scene-river.svg'] = [
     '  <rect x="460" y="282" width="10" height="42" fill="#8A7B67"/>',
     '  <circle cx="150" cy="200" r="26" fill="#D6DEE3"/>',
     '  <circle cx="650" cy="175" r="18" fill="#D6DEE3"/>',
-    cap('איור סכמטי — מעבר נהר'), '</svg>']
+    '</svg>']
 
 # 5 — a harbour / narrow bay
 FILES['scene-harbor.svg'] = [
@@ -60,7 +60,7 @@ FILES['scene-harbor.svg'] = [
     '  <polygon points="360,290 400,230 440,290" fill="#F2F6F8"/>',
     '  <rect x="392" y="230" width="4" height="62" fill="#7E8D99"/>',
     '  <polygon points="300,320 330,285 360,320" fill="#F2F6F8"/>',
-    cap('איור סכמטי — מפרץ צר'), '</svg>']
+    '</svg>']
 
 # 6 — schematic map (abstract regions, NOT a real place)
 FILES['map-schematic.svg'] = [
@@ -73,7 +73,7 @@ FILES['map-schematic.svg'] = [
     '  <circle cx="230" cy="180" r="7" fill="#7E7055"/>',
     '  <circle cx="560" cy="170" r="7" fill="#7E7055"/>',
     '  <circle cx="370" cy="360" r="7" fill="#7E7055"/>',
-    cap('איור סכמטי — מפת אזורים (אינה מפה אמיתית)', 430, '#8C8268'), '</svg>']
+    '</svg>']
 
 # 7 — bar chart (abstract, unlabelled axes)
 FILES['chart-bars.svg'] = [
@@ -85,7 +85,7 @@ for i, h in enumerate([120, 180, 90, 230, 160, 260, 140]):
     x = 130 + i * 82
     FILES['chart-bars.svg'].append(
         '  <rect x="%d" y="%d" width="46" height="%d" rx="3" fill="#9DB7C6"/>' % (x, 370 - h, h))
-FILES['chart-bars.svg'] += [cap('איור סכמטי — תרשים עמודות'), '</svg>']
+FILES['chart-bars.svg'] += ['</svg>']
 
 # 8 — line chart (abstract)
 FILES['chart-line.svg'] = [
@@ -97,7 +97,7 @@ FILES['chart-line.svg'] = [
     'fill="none" stroke="#7FA6BC" stroke-width="4" stroke-linejoin="round"/>',
     '  <polyline points="110,350 210,330 310,340 410,300 510,310 610,270 710,285" '
     'fill="none" stroke="#C9A98E" stroke-width="3" stroke-dasharray="7 6"/>',
-    cap('איור סכמטי — תרשים מגמה'), '</svg>']
+    '</svg>']
 
 for name, parts in FILES.items():
     io.open(os.path.join(OUT, name), 'w', encoding='utf-8', newline=chr(10)).write(

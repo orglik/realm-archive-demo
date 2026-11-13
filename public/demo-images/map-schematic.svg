@@ -8,5 +8,4 @@
   <circle cx="230" cy="180" r="7" fill="#7E7055"/>
   <circle cx="560" cy="170" r="7" fill="#7E7055"/>
   <circle cx="370" cy="360" r="7" fill="#7E7055"/>
-  <text x="400" y="430" font-size="13" fill="#8C8268" text-anchor="middle" font-family="sans-serif">איור סכמטי — מפת אזורים (אינה מפה אמיתית)</text>
 </svg>
