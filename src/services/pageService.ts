@@ -11,8 +11,8 @@ import { wouldCreateCycle } from '@/utils/topicHierarchy'
 // Seeding runs ONLY when this key is absent (see readStorage below): an existing browser keeps its
 // stored copy forever. BUMP THIS ON ANY CHANGE TO src/data/*.ts, or returning visitors silently keep
 // the old dataset and it looks like a rendering bug rather than stale storage.
-const PAGES_KEY = 'content_pages_v7'
-const LINKS_KEY = 'content_links_v7'
+const PAGES_KEY = 'content_pages_v8'
+const LINKS_KEY = 'content_links_v8'
 const TOPIC_LINKS_KEY = 'content_topic_links_v7'
 const DELAY_MS = 350
 

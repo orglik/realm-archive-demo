@@ -751,20 +751,22 @@ const councilContent: EventContent = {
 
 // ═══════════════════ REFERENCE CONTENT ═══════════════════
 
-const housesRefContent: ReferencePageContent = {
+const dragonsRefContent: ReferencePageContent = {
   hero: {
-    subtitle: 'ריכוז מקורות על בתי האצולה המרכזיים',
-    heroImage: { id: 'h-r1', src: assetPath('/demo-images/chart-bars.svg'), name: 'איור כללי — התפלגות בתים' },
+    subtitle: 'איך נלחמים במשהו שעף, נושם אש, ואי אפשר להקיף אותו',
+    heroImage: { id: 'h-r1', src: assetPath('/demo-images/dragon-over-wall.svg'), name: 'איור מקורי — יצור מעופף מעל חומה' },
   },
   overview: {
-    synthesis: 'דף עיון רוחבי המרכז מקורות על בתי האצולה: אחוזות, בריתות וזיקות הדדיות. הדף אינו חלק מהיררכיית הנושאים אלא מקושר לרוחב.',
+    synthesis: 'כל מה שצבא יודע לעשות מניח שלאויב יש אגף, שהוא נע על הקרקע, ושאפשר לכתר אותו. דרקון שובר את שלוש ההנחות בבת אחת, וכל מה שנשאר הוא לא טקטיקה אלא סדרה של תרגילים נואשים: לירות למעלה, להידחק מתחת לאבן, או לקוות שהרוכב יטעה. הדף הזה מרכז את מה שידוע — מה עבד פעם או פעמיים, מה סופר אחר כך כאילו עבד, ומה פשוט נשרף.',
   },
   deepening: [
-    { type: 'מסמך', title: 'סקירת הזירות — מסמך רקע', fileName: 'arenas_overview.txt', fileRef: assetPath('/mock-files/arenas_overview.txt') },
-    { type: 'אוגדן', title: 'אוגדן בתי האצולה', url: assetPath('/bundles/houses.html') },
+    { type: 'מסמך', title: 'מה עובד נגד דרקון, ומה רק נשמע טוב', fileName: 'dragon_tactics.txt', fileRef: assetPath('/mock-files/dragon_tactics.txt') },
+    { type: 'מסמך', title: 'עדויות מן הקרקע', fileName: 'ground_accounts.txt', fileRef: assetPath('/mock-files/ground_accounts.txt') },
+    { type: 'אוגדן', title: 'אוגדן נשק נגד דרקונים', url: assetPath('/bundles/anti-dragon.html') },
+    { type: 'אוגדן', title: 'אוגדן מצורים ושריפות', url: assetPath('/bundles/sieges-and-fires.html') },
   ],
 
-  kingsWord: 'רשימת מקורות שווה כמה שהיא מעודכנת. זו נבדקה לאחרונה בסוף המערכה.',
+  kingsWord: 'אם אתם קוראים את זה לפני קרב, שימו לב לדבר אחד: כל העצות כאן נכתבו בידי מי ששרד, וזה בדיוק מה שהופך אותן למטעות. איש לא תיעד את השיטות שלא עבדו — הם לא חזרו כדי לספר.',
 }
 
 const chronologyRefContent: ReferencePageContent = {
@@ -901,10 +903,10 @@ export const mockPages: ContentPage[] = [
 
   // ── References ──
   {
-    id: 'r1', type: 'reference', title: 'מקורות על בתי האצולה', status: 'published',
+    id: 'r1', type: 'reference', title: 'לחימה בדרקונים', status: 'published',
     createdAt: '8298-02-15T00:00:00.000Z', updatedAt: '8298-11-10T00:00:00.000Z', lastPublishedAt: '8298-11-10T00:00:00.000Z',
-    content: housesRefContent,
-    publishedSnapshot: { title: 'מקורות על בתי האצולה', content: housesRefContent },
+    content: dragonsRefContent,
+    publishedSnapshot: { title: 'לחימה בדרקונים', content: dragonsRefContent },
   },
   {
     id: 'r2', type: 'reference', title: 'כרונולוגיית המלחמה', status: 'published',

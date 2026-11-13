@@ -28,8 +28,8 @@ export const mockLinks: PageLink[] = [
 
   // Reference pages reach sideways into topics. r3 is deliberately absent here: with no topic link
   // it renders in the "unassigned references" group on the reader home.
-  { aId: 'r1', bId: 't4' },
-  { aId: 'r1', bId: 't5' },
+  { aId: 'r1', bId: 't1' },
+  { aId: 'r1', bId: 't3' },
   { aId: 'r2', bId: 't1' },
   { aId: 'r4', bId: 't1' },
 
